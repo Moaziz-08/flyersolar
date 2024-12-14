@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solarenergie Flyer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* Reset */
         * {
             margin: 0;
             padding: 0;
@@ -13,61 +13,97 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f3f9fb;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e1f5fe, #fce4ec);
             color: #333;
-            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .flyer-container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
-            margin: 20px auto;
-            background: #fff;
-            border-radius: 10px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-in-out;
+            backdrop-filter: blur(10px);
         }
 
-        /* Header */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .flyer-header {
-            background: linear-gradient(135deg, #ffba08, #faa307);
-            padding: 40px 20px;
+            background: linear-gradient(120deg, #ff6f61, #ff8c00);
+            padding: 100px 20px;
             text-align: center;
             color: #fff;
+            clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+            position: relative;
+        }
+
+        .flyer-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent);
+            mix-blend-mode: overlay;
         }
 
         .flyer-header h1 {
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .flyer-header span {
-            font-size: 1.2rem;
+            font-size: 1.7rem;
+            font-style: italic;
         }
 
-        /* Sections */
         .flyer-section {
-            padding: 30px 20px;
+            padding: 60px 40px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            gap: 40px;
+            transition: all 0.5s ease;
+            position: relative;
         }
 
         .flyer-section:nth-child(odd) {
-            background: #f7fafc;
+            background: rgba(225, 245, 254, 0.8);
+        }
+
+        .flyer-section:nth-child(even) {
+            background: rgba(252, 228, 236, 0.8);
         }
 
         .flyer-section img {
             max-width: 45%;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .flyer-section img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         .flyer-section div {
@@ -75,15 +111,15 @@
         }
 
         .flyer-section h2 {
-            font-size: 2rem;
-            color: #3a86ff;
-            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            color: #ff8c00;
+            margin-bottom: 25px;
         }
 
-        .flyer-section p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 10px;
+        .flyer-section p, .flyer-section ul {
+            font-size: 1.4rem;
+            color: #444;
         }
 
         .flyer-section ul {
@@ -92,62 +128,77 @@
         }
 
         .flyer-section ul li {
-            font-size: 1rem;
-            margin-bottom: 8px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
 
         .flyer-section ul li::before {
             content: '\2713';
-            color: #ffba08;
-            font-size: 1.3rem;
-            margin-right: 8px;
+            color: #ff8c00;
+            font-size: 1.7rem;
+            margin-right: 12px;
         }
 
-        /* CTA Section */
         .flyer-cta {
-            padding: 40px 20px;
+            padding: 80px 20px;
             text-align: center;
-            background: linear-gradient(135deg, #3a86ff, #5cdb95);
+            background: linear-gradient(135deg, #48cae4, #007bff);
             color: #fff;
+            clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+            position: relative;
+        }
+
+        .flyer-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent);
+            mix-blend-mode: screen;
         }
 
         .flyer-cta h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
         }
 
         .flyer-cta p {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.6rem;
+            margin-bottom: 40px;
         }
 
         .flyer-cta a {
             display: inline-block;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            background: #ffba08;
+            padding: 18px 50px;
+            font-size: 1.5rem;
+            background: #ff8c00;
             color: #fff;
-            border-radius: 25px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: background 0.4s ease, transform 0.4s ease;
         }
 
         .flyer-cta a:hover {
-            background: #faa307;
+            background: #ff3d00;
+            transform: translateY(-8px);
         }
 
-        /* Footer */
         .flyer-footer {
-            padding: 15px;
+            padding: 30px;
             text-align: center;
-            background: #333;
+            background: #222;
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
         }
 
-        /* Responsive */
+        .flyer-footer span {
+            display: block;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
         @media (max-width: 768px) {
             .flyer-section {
                 flex-direction: column;
@@ -157,35 +208,43 @@
             .flyer-section img, .flyer-section div {
                 max-width: 100%;
             }
+
+            .flyer-header h1 {
+                font-size: 3rem;
+            }
+
+            .flyer-cta h2 {
+                font-size: 2.5rem;
+            }
+
+            .flyer-cta p {
+                font-size: 1.3rem;
+            }
+
+            .flyer-cta a {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="flyer-container">
-        <!-- Header -->
         <header class="flyer-header">
             <h1>Solarenergie der Zukunft</h1>
             <span>Nachhaltige Lösungen für Ihr Zuhause und die Umwelt</span>
         </header>
 
-        <!-- Section 1: How it works -->
         <section class="flyer-section">
             <div>
                 <h2>Wie funktionieren Solarzellen?</h2>
                 <p>Solarzellen bestehen aus einem speziellen Material, das Strom erzeugt, sobald Sonnenlicht darauf trifft. Sie haben zwei Siliziumschichten:</p>
-
                 <p>- Die obere Schicht enthält extra Elektronen (n-dotiert).</p>
-                   
                 <p>- Die untere Schicht hat weniger Elektronen (p-dotiert).</p>
-                   
-                   
-                   
                 <p>Zwischen diesen Schichten gibt es eine Grenze, durch die die Elektronen fließen können. Wenn Sonnenlicht auf die Solarzelle fällt, werden die Elektronen in Bewegung gesetzt, und Strom entsteht. Dieser Strom ist zunächst Gleichstrom. Damit er in Haushalten genutzt werden kann, wandelt ein Wechselrichter ihn in Wechselstrom um.</p>
             </div>
             <img src="solar-how-it-works.png" alt="Funktionsweise von Solarzellen">
         </section>
 
-        <!-- Section 2: Solar Types -->
         <section class="flyer-section">
             <img src="arten.jpeg" alt="Arten von Solarzellen">
             <div>
@@ -198,77 +257,47 @@
             </div>
         </section>
 
-        <!-- Section 3: Benefits -->
         <section class="flyer-section">
             <div>
                 <h2>Warum Solarenergie?</h2>
                 <ul>
-                <li>Weniger Kosten: Solarstrom ist günstiger als Netzstrom. Sie sparen bei Ihren Stromrechnungen.</li>
-
-
-
-        <h1><p>Gut für die Umwelt:</p></h1>
-
-<li>Solarstrom wird ohne schädliche Emissionen erzeugt, da keine fossilen Brennstoffe benötigt werden.</li>
-
-<li>Die Nutzung von Solarenergie reduziert den CO₂-Ausstoß und schützt das Klima.</li>
-
-
-
-<li>Solarenergie ist erneuerbar und unerschöpflich – die Sonne liefert uns immer Energie.</li>
-
-
-
-<li>Photovoltaikanlagen arbeiten nachhaltig und liefern über Jahrzehnte sauberen Strom.</li>
-
-
-
-<li>Unabhängigkeit: Mit Ihrer eigenen Solaranlage sind Sie weniger abhängig von steigenden Strompreisen und traditionellen Energiequellen.</li>
-
-
-
-<li>Mehr Wert fürs Haus: Eine Solaranlage macht Ihre Immobilie wertvoller.</li>
-
-
-
-<li>Zusätzliches Einkommen: Überschüssiger Strom kann ins Netz eingespeist werden, und Sie bekommen dafür Geld.</li>
+                    <li>Weniger Kosten: Solarstrom ist günstiger als Netzstrom. Sie sparen bei Ihren Stromrechnungen.</li>
+                    <li>Gut für die Umwelt: Solarstrom wird ohne schädliche Emissionen erzeugt, da keine fossilen Brennstoffe benötigt werden.</li>
+                    <li>Die Nutzung von Solarenergie reduziert den CO₂-Ausstoß und schützt das Klima.</li>
+                    <li>Solarenergie ist erneuerbar und unerschöpflich – die Sonne liefert uns immer Energie.</li>
+                    <li>Unabhängigkeit: Mit Ihrer eigenen Solaranlage sind Sie weniger abhängig von steigenden Strompreisen und traditionellen Energiequellen.</li>
+                    <li>Mehr Wert fürs Haus: Eine Solaranlage macht Ihre Immobilie wertvoller.</li>
+                    <li>Zusätzliches Einkommen: Überschüssiger Strom kann ins Netz eingespeist werden, und Sie bekommen dafür Geld.</li>
                 </ul>
+                <p>Solarstrom spart Geld, schützt die Umwelt und sorgt für eine nachhaltige Zukunft!</p>
             </div>
             <img src="vorteile.png" alt="Vorteile der Solarenergie">
         </section>
 
-         <!-- Installation Section -->
-         <section class="flyer-section">
+        <section class="flyer-section">
             <div>
-                <h2>Unsere Technik: So funktioniert die Installation</h2>
-                <ul>
+                <h2>Unsere Technik: Installation</h2>
                 <p>Damit Ihre Solaranlage perfekt arbeitet, planen wir die Installation sorgfältig. Das sorgt dafür, dass alles reibungslos läuft und höchste Sicherheitsstandards eingehalten werden.</p>
-
-<li>Dachausrichtung: Wir prüfen die Ausrichtung und Neigung Ihres Dachs, um die maximale Energieausbeute zu erzielen.</li>
-
-
-
-<li>Elektroplanung: Unsere Experten erstellen genaue Pläne und sorgen für die optimale Platzierung von Schaltern und Steckdosen. So garantieren wir eine sichere Stromversorgung.</li>
-
-
-
-<li>Moderne Lösungen: Wir integrieren bei Bedarf Stromspeicher und Ladestationen für Elektroautos, damit Sie Ihre Energie effizient nutzen können.</li>
-
-
-
-<li>Wartung: Für eine lange Lebensdauer Ihrer Anlage bieten wir regelmäßige Wartungen an, um Ausfälle zu vermeiden und die Leistung zu erhalten.</li>
-
-
-
-<- Wir kümmern uns um alles – von der Planung bis zur Instandhaltung – damit Sie die Vorteile von Solarstrom voll nutzen können!</p>
+                <ul>
+                    <li>Dachausrichtung: Wir prüfen die Ausrichtung und Neigung Ihres Dachs, um die maximale Energieausbeute zu erzielen.</li>
+                    <li>Elektroplanung: Unsere Experten erstellen genaue Pläne und sorgen für die optimale Platzierung von Schaltern und Steckdosen. So garantieren wir eine sichere Stromversorgung.</li>
+                    <li>Moderne Lösungen: Wir integrieren bei Bedarf Stromspeicher und Ladestationen für Elektroautos, damit Sie Ihre Energie effizient nutzen können.</li>
+                    <li>Wartung: Für eine lange Lebensdauer Ihrer Anlage bieten wir regelmäßige Wartungen an, um Ausfälle zu vermeiden und die Leistung zu erhalten.</li>
                 </ul>
+                <p>Wir kümmern uns um alles – von der Planung bis zur Instandhaltung – damit Sie die Vorteile von Solarstrom voll nutzen können!</p>
             </div>
             <img src="instalation.jpg" alt="Solarinstallation">
         </section>
 
-        <!-- Footer -->
+        <section class="flyer-cta">
+            <h2>Bereit für Solarenergie?</h2>
+            <p>Machen Sie den ersten Schritt zu einer nachhaltigen Zukunft. Kontaktieren Sie uns noch heute!</p>
+            <a href="#">Mehr Erfahren</a>
+        </section>
+
         <footer class="flyer-footer">
             &copy; 2024 Solar Experts. Nachhaltigkeit für eine grüne Zukunft.
+            <span>Website erstellt von Moaz Abdulaziz</span>
         </footer>
     </div>
 </body>
