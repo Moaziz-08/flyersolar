@@ -199,6 +199,12 @@
             font-size: 1rem;
         }
 
+        @media (max-width: 1200px) {
+            .flyer-section img {
+                max-width: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             .flyer-section {
                 flex-direction: column;
@@ -223,6 +229,25 @@
 
             .flyer-cta a {
                 font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flyer-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .flyer-cta h2 {
+                font-size: 2rem;
+            }
+
+            .flyer-cta p {
+                font-size: 1.2rem;
+            }
+
+            .flyer-cta a {
+                font-size: 1rem;
+                padding: 15px 40px;
             }
         }
     </style>
